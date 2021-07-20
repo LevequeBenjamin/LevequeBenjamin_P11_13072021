@@ -1,3 +1,4 @@
 coverage==5.5
 pytest==6.2.4
 locust==1.6.0
+pylint==2.9.3
