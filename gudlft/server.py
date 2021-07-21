@@ -44,17 +44,20 @@ def purchase_places():
     found_club = get_club_by_name(name=request.form["club"])
     places_required = request.form['places']
 
-    purchase_is_valid = is_purchase_valid(
-        competition=found_competition,
-        club=found_club,
-        places=places_required,)
+    if found_competition and found_competition:
+        purchase_is_valid = is_purchase_valid(
+            club=found_club,
+            places=places_required,)
 
-    if purchase_is_valid:
-        found_competition['numberOfPlaces'] = int(found_competition['numberOfPlaces']) - int(places_required)
-        found_club['points'] = int(found_club['points']) - int(places_required)
-        flash('Great-booking complete!')
+        if purchase_is_valid:
+            found_competition['numberOfPlaces'] = int(found_competition['numberOfPlaces']) - int(places_required)
+            found_club['points'] = int(found_club['points']) - int(places_required)
+            flash('Great-booking complete!')
+        else:
+            flash("you cannot reserve more than 12 places or it is possible that you do not have enough points.")
     else:
         flash("Something went wrong-please try again")
+
     return render_template('welcome.html', club=found_club, competitions=COMPETITIONS)
 
 
