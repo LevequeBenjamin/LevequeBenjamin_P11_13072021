@@ -1,5 +1,7 @@
 import json
 
+from gudlft.utils.utils import is_competition_date_not_past
+
 
 def load_clubs():
     """Docstrings."""
@@ -11,6 +13,13 @@ def load_competitions():
     """Docstrings."""
     with open('db/competitions.json') as file:
         return json.load(file)['competitions']
+
+
+def load_competitions_date_is_futur():
+    """Docstrings."""
+    with open('db/competitions.json') as file:
+        return [competition for competition in json.load(file)['competitions'] if not
+                is_competition_date_not_past(competition['date'])]
 
 
 def get_club_by_mail(mail: str):

@@ -1,4 +1,4 @@
-from flask import flash
+from datetime import datetime
 
 
 def get_max_places(club: dict):
@@ -12,3 +12,9 @@ def is_purchase_valid(club, places):
         return False
 
     return True
+
+
+def is_competition_date_not_past(date):
+    date_time = datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
+
+    return datetime.today() < date_time
