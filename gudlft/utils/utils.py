@@ -14,7 +14,7 @@ def is_purchase_valid(club, places):
     return True
 
 
-def is_competition_date_not_past(date):
+def is_competition_finished(date):
     date_time = datetime.strptime(date, "%Y-%m-%d %H:%M:%S")
 
-    return datetime.today() < date_time
+    return datetime.today() > date_time

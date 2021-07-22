@@ -1,7 +1,5 @@
 import json
 
-from gudlft.utils.utils import is_competition_date_not_past
-
 
 def load_clubs():
     """Docstrings."""

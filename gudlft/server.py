@@ -2,8 +2,8 @@
 from datetime import datetime
 
 from flask import Flask, render_template, request, redirect, flash, url_for
-from gudlft.get_data.get_data import CLUBS, get_competition_by_name, get_club_by_name, COMPETITIONS, get_club_by_mail
-from gudlft.utils.utils import is_purchase_valid, is_competition_date_not_past
+from gudlft.get_data.get_data import get_competition_by_name, get_club_by_name, COMPETITIONS, get_club_by_mail, CLUBS
+from gudlft.utils.utils import is_purchase_valid, is_competition_finished
 
 app = Flask(__name__)
 app.secret_key = 'something_special'
@@ -44,12 +44,11 @@ def purchase_places():
     found_club = get_club_by_name(name=request.form["club"])
     places_required = request.form['places']
 
-    if found_competition and found_competition and is_competition_date_not_past(found_competition['date']):
-        purchase_is_valid = is_purchase_valid(
-            club=found_club,
-            places=places_required, )
+    if found_competition and found_competition and not is_competition_finished(found_competition['date']):
 
-        if purchase_is_valid:
+        if is_purchase_valid(
+                club=found_club,
+                places=places_required, ):
             found_competition['numberOfPlaces'] = int(found_competition['numberOfPlaces']) - int(places_required)
             found_club['points'] = int(found_club['points']) - int(places_required)
             flash('Great-booking complete!')
@@ -61,7 +60,10 @@ def purchase_places():
     return render_template('welcome.html', club=found_club, competitions=COMPETITIONS, datetime=datetime)
 
 
-# TODO: Add route for points display
+@app.route("/showSummary/clubs")
+def show_clubs():
+    """Docstrings."""
+    return render_template("clubs.html", clubs=CLUBS)
 
 
 @app.route('/logout')
