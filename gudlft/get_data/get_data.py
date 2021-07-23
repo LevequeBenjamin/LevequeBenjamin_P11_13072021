@@ -1,26 +1,24 @@
 import json
+from pathlib import Path
+
+DB_CLUBS_PATH = Path(__file__).resolve().parent.parent / "db/clubs.json"
+DB_COMPETITIONS_PATH = Path(__file__).resolve().parent.parent / "db/competitions.json"
 
 
 def load_clubs():
     """Docstrings."""
-    with open('db/clubs.json') as file:
+    with open(DB_CLUBS_PATH) as file:
         return json.load(file)['clubs']
 
 
 def load_competitions():
     """Docstrings."""
-    with open('db/competitions.json') as file:
+    with open(DB_COMPETITIONS_PATH) as file:
         return json.load(file)['competitions']
 
 
-def load_competitions_date_is_futur():
-    """Docstrings."""
-    with open('db/competitions.json') as file:
-        return [competition for competition in json.load(file)['competitions'] if not
-                is_competition_date_not_past(competition['date'])]
-
-
 def get_club_by_mail(mail: str):
+    """Docstrings."""
     selected_club = None
     for club in CLUBS:
         if club["email"] == mail:
@@ -31,6 +29,7 @@ def get_club_by_mail(mail: str):
 
 
 def get_club_by_name(name: str):
+    """Docstrings."""
     selected_club = None
     for club in CLUBS:
         if club["name"] == name:
@@ -41,6 +40,7 @@ def get_club_by_name(name: str):
 
 
 def get_competition_by_name(name: str):
+    """Docstrings."""
     selected_competition = None
     for competition in COMPETITIONS:
         if competition["name"] == name:
@@ -50,5 +50,13 @@ def get_competition_by_name(name: str):
     return selected_competition
 
 
-COMPETITIONS = load_competitions()
-CLUBS = load_clubs()
+def load():
+    global COMPETITIONS
+    global CLUBS
+
+    COMPETITIONS = load_competitions()
+    CLUBS = load_clubs()
+
+
+COMPETITIONS = None
+CLUBS = None
