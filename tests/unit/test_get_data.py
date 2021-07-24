@@ -1,9 +1,10 @@
 """Docstrings."""
 
 from gudlft.get_data import get_data
+from tests.conftest import BaseFixture
 
 
-class TestLoadClubs:
+class TestLoadClubs(BaseFixture):
     """Docstrings."""
 
     def test_load_clubs(self, database, clubs):
@@ -30,7 +31,7 @@ class TestLoadClubs:
         assert get_data.get_club_by_name(name="foo") is None
 
 
-class TestLoadCompetitions:
+class TestLoadCompetitions(BaseFixture):
     """Docstrings."""
 
     def test_load_competitions(self, database, competitions):
@@ -48,7 +49,7 @@ class TestLoadCompetitions:
         assert get_data.get_competition_by_name(name="foo") is None
 
 
-class TestLoad:
+class TestLoad(BaseFixture):
     """Docstrings."""
 
     def test_load(self, database, clubs, competitions):

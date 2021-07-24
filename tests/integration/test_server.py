@@ -1,7 +1,8 @@
 """Docstrings."""
+from tests.conftest import BaseFixture
 
 
-class TestClient:
+class TestClient(BaseFixture):
     """Docstrings."""
 
     def test_index(self, client):
@@ -12,7 +13,7 @@ class TestClient:
         assert b'Welcome' in response.data
 
 
-class TestShowSummary:
+class TestShowSummary(BaseFixture):
     """Docstrings."""
 
     def setup_method(self):
@@ -57,7 +58,7 @@ class TestShowSummary:
             assert competition["name"] not in str(response.data)
 
 
-class TestBook:
+class TestBook(BaseFixture):
     """Docstrings."""
 
     def setup_method(self):
@@ -78,7 +79,7 @@ class TestBook:
         assert response.status_code == 500
 
 
-class TestPurchasePlaces:
+class TestPurchasePlaces(BaseFixture):
     """Docstrings."""
 
     def test_booking(self, client, database):
@@ -141,7 +142,7 @@ class TestPurchasePlaces:
         assert b'Something went wrong-please' in response.data
 
 
-class TestShowClub:
+class TestShowClub(BaseFixture):
     """Docstrings."""
 
     def test_clubs(self, client, database):
@@ -154,7 +155,7 @@ class TestShowClub:
             assert club["name"] in str(response.data)
 
 
-class TestLogin:
+class TestLogin(BaseFixture):
     """Docstrings."""
 
     def test_logout(self, client):

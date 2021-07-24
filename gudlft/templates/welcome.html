@@ -6,11 +6,11 @@
     <title>Summary | GUDLFT</title>
 </head>
 <body>
-        <h2>Welcome, {{club['email']}} </h2><a href="{{url_for('logout')}}">Logout</a>
+        <h2>Welcome, {{club['email']}} </h2><a href="{{url_for('logout')}}" class="logout">Logout</a>
 
     {% with messages = get_flashed_messages()%}
     {% if messages %}
-        <ul>
+        <ul class="flashes">
        {% for message in messages %}
             <li style="color: green">{{message}}</li>
         {% endfor %}
@@ -19,7 +19,7 @@
     Points available: {{club['points']}}
     <h3>Competitions:</h3>
         {% if competitions %}
-            <ul>
+            <ul class="competitions_container">
                 {% for comp in competitions %}
                 <li>
                     {{comp['name']}}<br />

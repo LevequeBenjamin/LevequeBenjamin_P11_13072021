@@ -16,7 +16,7 @@
     {% endif %}
     {% endwith %}
     <h2>List of clubs</h2>
-    <ul>
+    <ul class="clubs_container">
     {% for club in clubs %}
         <li> {{ club["name"] }} - {{ club["points"] }} points </li>
     {% endfor %}

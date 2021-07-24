@@ -1,8 +1,9 @@
 """Docstrings."""
 from gudlft.utils import utils
+from tests.conftest import BaseFixture
 
 
-class TestGetMaxPlaces:
+class TestGetMaxPlaces(BaseFixture):
     """Docstrings."""
 
     def test_get_max_places(self, database):
@@ -23,7 +24,7 @@ class TestGetMaxPlaces:
         assert places_1 == 1
 
 
-class TestIsPurchase:
+class TestIsPurchase(BaseFixture):
     """Docstrings."""
 
     def test_is_purchase(self, database):
@@ -61,7 +62,7 @@ class TestIsPurchase:
         assert not purchase
 
 
-class TestIsCompetitionFinished:
+class TestIsCompetitionFinished(BaseFixture):
     """Docstrings."""
 
     def test_is_competition_finished(self):
