@@ -5,7 +5,8 @@ from tests.conftest import BaseFixture
 class TestClient(BaseFixture):
     """Docstrings."""
 
-    def test_index(self, client):
+    @staticmethod
+    def test_index(client):
         """Docstrings."""
         response = client.get("/")
 
@@ -17,9 +18,11 @@ class TestShowSummary(BaseFixture):
     """Docstrings."""
 
     def setup_method(self):
+        """Docstrings."""
         self.email_invalid = "foo@bar.com"
 
-    def test_login(self, client, database):
+    @staticmethod
+    def test_login(client, database):
         """Docstrings."""
         response = client.post('/showSummary', data=dict(
             email=database.CLUBS[0]['email'],
@@ -38,7 +41,8 @@ class TestShowSummary(BaseFixture):
         assert response.status_code == 200
         assert b"Sorry, that email wasn&#39;t found." in response.data
 
-    def test_competitions(self, client, database):
+    @staticmethod
+    def test_competitions(client, database):
         """Docstrings."""
         response = client.post('/showSummary', data=dict(
             email=database.CLUBS[0]['email'],
@@ -62,6 +66,7 @@ class TestBook(BaseFixture):
     """Docstrings."""
 
     def setup_method(self):
+        """Docstrings."""
         self.places = 'Places available: 21'
 
     def test_booking(self, client, database):
@@ -72,7 +77,8 @@ class TestBook(BaseFixture):
         assert bytes(database.COMPETITIONS[0]['name'], 'utf-8') in response.data
         assert bytes(self.places, 'utf-8') in response.data
 
-    def test_booking_invalid(self, client):
+    @staticmethod
+    def test_booking_invalid(client):
         """Docstrings."""
         response = client.get("/book/Foo/Bar")
 
@@ -82,7 +88,8 @@ class TestBook(BaseFixture):
 class TestPurchasePlaces(BaseFixture):
     """Docstrings."""
 
-    def test_booking(self, client, database):
+    @staticmethod
+    def test_booking(client, database):
         """Docstrings."""
         initial_places = int(database.COMPETITIONS[0]["numberOfPlaces"])
         initial_points = int(database.CLUBS[0]["points"])
@@ -98,7 +105,8 @@ class TestPurchasePlaces(BaseFixture):
         assert int(database.COMPETITIONS[0]["numberOfPlaces"]) == initial_places - 5
         assert int(database.CLUBS[0]["points"]) == initial_points - 5
 
-    def test_booking_with_15_places(self, client, database):
+    @staticmethod
+    def test_booking_with_15_places(client, database):
         """Docstrings."""
         # I test the request with more than 12 places.
         response = client.post('/purchasePlaces', data=dict(
@@ -109,7 +117,8 @@ class TestPurchasePlaces(BaseFixture):
 
         assert b'you cannot reserve more than 12' in response.data
 
-    def test_booking_with_club_enough_space_available(self, client, database):
+    @staticmethod
+    def test_booking_with_club_enough_space_available(client, database):
         """Docstrings."""
         # I test the request with a greater number of places than the club is available.
         response = client.post('/purchasePlaces', data=dict(
@@ -120,7 +129,8 @@ class TestPurchasePlaces(BaseFixture):
 
         assert b'you cannot reserve more than 12' in response.data
 
-    def test_booking_with_competition_enough_space_available(self, client, database):
+    @staticmethod
+    def test_booking_with_competition_enough_space_available(client, database):
         """Docstrings."""
         # I test the request with a greater number of places than the competition is available.
         response = client.post('/purchasePlaces', data=dict(
@@ -131,7 +141,8 @@ class TestPurchasePlaces(BaseFixture):
 
         assert b'you cannot reserve more than 12' in response.data
 
-    def test_booking_with_finished_competition(self, client, database):
+    @staticmethod
+    def test_booking_with_finished_competition(client, database):
         """Docstrings."""
         # I test the request with a competition which is finished.
         response = client.post('/purchasePlaces', data=dict(
@@ -145,7 +156,8 @@ class TestPurchasePlaces(BaseFixture):
 class TestShowClub(BaseFixture):
     """Docstrings."""
 
-    def test_clubs(self, client, database):
+    @staticmethod
+    def test_clubs(client, database):
         """Docstrings."""
         response = client.get("showSummary/clubs")
 
@@ -158,7 +170,8 @@ class TestShowClub(BaseFixture):
 class TestLogin(BaseFixture):
     """Docstrings."""
 
-    def test_logout(self, client):
+    @staticmethod
+    def test_logout(client):
         """Docstrings."""
         response = client.get("/logout", follow_redirects=True)
 

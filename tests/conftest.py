@@ -2,8 +2,8 @@
 
 # import
 import json
-import pytest
 from multiprocessing import Process
+import pytest
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from gudlft import server
@@ -13,14 +13,16 @@ from gudlft.get_data import get_data
 class BaseFixture:
     """Docstrings."""
 
+    @staticmethod
     @pytest.fixture()
-    def client(self):
+    def client():
         """Docstrings."""
         with server.app.test_client() as client:
             yield client
 
+    @staticmethod
     @pytest.fixture(scope="module")
-    def clubs(self, tmp_path_factory):
+    def clubs(tmp_path_factory):
         """Docstrings."""
         clubs = {
             "clubs": [
@@ -37,8 +39,9 @@ class BaseFixture:
 
         return clubs_file_path, clubs
 
+    @staticmethod
     @pytest.fixture(scope="module")
-    def competitions(self, tmp_path_factory):
+    def competitions(tmp_path_factory):
         """Docstrings."""
         competitions = {
             "competitions": [
@@ -67,8 +70,9 @@ class BaseFixture:
 
         return competitions_file_path, competitions
 
+    @staticmethod
     @pytest.fixture(scope="module")
-    def database(self, clubs, competitions):
+    def database(clubs, competitions):
         """Docstrings."""
         get_data.DB_CLUBS_PATH = clubs[0]
         get_data.DB_COMPETITIONS_PATH = competitions[0]
@@ -79,12 +83,14 @@ class BaseFixture:
 
 class Driver:
     """Docstrings."""
+
+    @staticmethod
     @pytest.fixture(scope="module")
-    def driver(self, database):
+    def driver(database):
         """Docstrings."""
-        p = Process(target=server.app.run)
-        p.daemon = True
-        p.start()
+        process = Process(target=server.app.run)
+        process.daemon = True
+        process.start()
 
         options = Options()
         options.add_argument("--headless")

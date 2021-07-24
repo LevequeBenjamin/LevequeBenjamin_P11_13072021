@@ -1,5 +1,6 @@
-from locust import HttpUser, task, between
+"""Docstrings."""
 from random import randint
+from locust import HttpUser, task, between
 from tests.locust import locust_get_data
 
 

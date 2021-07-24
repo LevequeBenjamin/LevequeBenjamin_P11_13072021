@@ -15,7 +15,8 @@ class TestUi(BaseFixture, Driver):
         """Docstrings."""
         self.places = "12"
 
-    def test_login_ui(self, driver, database):
+    @staticmethod
+    def test_login_ui(driver, database):
         """Docstrings."""
         # the user enters his email and clicks on the "enter" button.
         # it is redirected to the welcome page with the message "Welcome, test1@test.com".
@@ -26,11 +27,14 @@ class TestUi(BaseFixture, Driver):
         email_input.send_keys(database.CLUBS[0]['email'])
         email_input.submit()
 
-        WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH, "//h2[contains(text(),'Welcome')]")))
+        WebDriverWait(driver, 5).until(
+            EC.visibility_of_element_located((By.XPATH, "//h2[contains(text(),'Welcome')]"))
+        )
 
         assert f"Welcome, {database.CLUBS[0]['email']}" in driver.page_source
 
-    def test_show_summary_ui(self, driver, database):
+    @staticmethod
+    def test_show_summary_ui(driver, database):
         """Docstrings."""
         # The number of places available is displayed and there are 20.
         # The competitions are displayed and and the number is correct.
@@ -86,7 +90,8 @@ class TestUi(BaseFixture, Driver):
         assert f"Number of Places: {str(database.COMPETITIONS[0]['numberOfPlaces'] - int(self.places))}" in \
                competitions[0].text
 
-    def test_logout_ui(self, driver, database):
+    @staticmethod
+    def test_logout_ui(driver, database):
         """Docstrings."""
         # The user clicks on the logout button.
         # It is redirected to the "index" page.
@@ -95,7 +100,8 @@ class TestUi(BaseFixture, Driver):
 
         assert "GUDLFT Registration" in driver.page_source
 
-    def test_club_list_ui(self, driver, database):
+    @staticmethod
+    def test_club_list_ui(driver, database):
         """Docstrings."""
         # The user clicks on the link "View all registered clubs and respective point count".
         # All clubs are well displayed and the number is correct.

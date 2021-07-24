@@ -1,8 +1,10 @@
+"""Docstrings."""
+import logging
 import json
 from multiprocessing import Process
+import tempfile
 from gudlft.get_data import get_data
 from gudlft import server
-import tempfile
 
 _COMPETITIONS_FP = tempfile.NamedTemporaryFile()
 _CLUBS_FP = tempfile.NamedTemporaryFile()
@@ -68,25 +70,15 @@ def load_db():
 
 def server_wrapper():
     """Mute Flask stdout and run server."""
-    import logging
-    import click
 
     log = logging.getLogger("werkzeug")
     log.setLevel(logging.ERROR)
 
-    def secho(text, file=None, nl=None, err=None, color=None, **styles):
-        pass
-
-    def echo(text, file=None, nl=None, err=None, color=None, **styles):
-        pass
-
-    click.echo = echo
-    click.secho = secho
     server.app.run()
 
 
 def start_server():
     """Start Flask server process."""
-    p = Process(target=server_wrapper)
-    p.daemon = True
-    p.start()
+    process = Process(target=server_wrapper)
+    process.daemon = True
+    process.start()

@@ -1,3 +1,4 @@
+"""Docstrings."""
 import json
 from pathlib import Path
 
@@ -51,6 +52,7 @@ def get_competition_by_name(name: str):
 
 
 def load():
+    """Docstrings."""
     global COMPETITIONS
     global CLUBS
 
