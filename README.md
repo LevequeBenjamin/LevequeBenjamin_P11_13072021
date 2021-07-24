@@ -1,51 +1,104 @@
-# gudlift-registration
+[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
 
-1. Why
+# BenjaminLeveque_P11_13072021
 
+## Améliorez une application Web Python par des tests et du débogage
 
-    This is a proof of concept (POC) project to show a light-weight version of our competition booking platform. The aim is the keep things as light as possible, and use feedback from the users to iterate.
+Le projet 11 de la formation Développeur d'application Python et l'amélioration d'une application web Python
+par des tests et du débogage.
 
-2. Getting Started
+## Technologies
+- Python
+- Flask
+- Pytest
+- Locust
 
-    This project uses the following technologies:
+## Auteur
+Lévêque Benjamin
 
-    * Python v3.x+
+### Installation
 
-    * [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+Cet application web exécutable localement peut être installée en suivant les étapes décrites ci-dessous.
 
-        Whereas Django does a lot of things for us out of the box, Flask allows us to add only what we need. 
-     
+#### 1. Clonez le [repository](https://github.com/LevequeBenjamin/LevequeBenjamin_P11_13072021.git) à l'aide de la commande suivante :
 
-    * [Virtual environment](https://virtualenv.pypa.io/en/stable/installation.html)
+```
+$ git clone "https://github.com/LevequeBenjamin/BenjaminLeveque_P9_23062021.git"
+``` 
+(vous pouvez également télécharger le code en temps 
+[qu'archive zip](https://github.com/LevequeBenjamin/LevequeBenjamin_P11_13072021/archive/refs/heads/master.zip))
 
-        This ensures you'll be able to install the correct packages without interfering with Python on your machine.
+#### 2. Exécutez l'application dans un environnement virtuel
 
-        Before you begin, please ensure you have this installed globally. 
+Rendez-vous depuis un terminal à la racine du répertoire BenjaminLeveque_P11_13072021 avec la commande :
+```
+$ cd BenjaminLeveque_P11_13072021
+```
 
+Pour créez un environnement, utilisez la commande :
 
-3. Installation
+`$ python3 -m venv env` sous macos ou linux.
 
-    - After cloning, change into the directory and type <code>virtualenv .</code>. This will then set up a a virtual python environment within that directory.
+`$ python -m venv env` sous windows.
 
-    - Next, type <code>source bin/activate</code>. You should see that your command prompt has changed to the name of the folder. This means that you can install packages in here without affecting affecting files outside. To deactivate, type <code>deactivate</code>
+Pour activer l'environnement, exécutez la commande :
 
-    - Rather than hunting around for the packages you need, you can install in one step. Type <code>pip install -r requirements.txt</code>. This will install all the packages listed in the respective file. If you install a package, make sure others know by updating the requirements.txt file. An easy way to do this is <code>pip freeze > requirements.txt</code>
+`$ source env/bin/activate` sous macos ou linux.
 
-    - Flask requires that you set an environmental variable to the python file. However you do that, you'll want to set the file to be <code>server.py</code>. Check [here](https://flask.palletsprojects.com/en/1.1.x/quickstart/#a-minimal-application) for more details
+`$ env/Scripts/activate` sous windows.
 
-    - You should now be ready to test the application. In the directory, type either <code>flask run</code> or <code>python -m flask run</code>. The app should respond with an address you should be able to go to using your browser.
+#### 3. Installez les dépendances du projet avec la commande :
+```
+$ pip install -r requirements.txt
+```
 
-4. Current Setup
+### Usage
 
-    The app is powered by [JSON files](https://www.tutorialspoint.com/json/json_quick_guide.htm). This is to get around having a DB until we actually need one. The main ones are:
-     
-    * competitions.json - list of competitions
-    * clubs.json - list of clubs with relevant information. You can look here to see what email addresses the app will accept for login.
+Pour lancer l'application utilisez les commandes :
 
-5. Testing
+```
+$ export FLASK_APP=server.py
+$ export FLASK_ENV=development
+$ flask run
+```
+#### Puis rendez-vous sur votre [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
 
-    You are free to use whatever testing framework you like-the main thing is that you can show what tests you are using.
+### Tests
 
-    We also like to show how well we're testing, so there's a module called 
-    [coverage](https://coverage.readthedocs.io/en/coverage-5.1/) you should add to your project.
+#### 1. Installez les dépendances du projet avec la commande :
 
+```
+$ pip install -r requirements--dev.txt
+```
+
+#### 2. Testez l'application avec `Pytest` :
+
+```
+$ coverage run -m pytest
+```
+
+#### 3. Générer un rapport de couverture avec `Coverage` :
+
+```
+$ pytest --cov=gudlft --cov-report html
+```
+
+#### 4. Testez les performances avec `Locust` :
+
+```
+$ locust --config tests/locust/master.conf
+```
+
+Vous pouvez également tester les perfomances avec la commande suivante :
+
+```
+$ locust -f tests/locust/locust_file.py 
+```
+Il faudra vous rendre sur l'adresse [http://0.0.0.0:8089/](http://0.0.0.0:8089/), et remplir les champs
+demandés.
+
+exemple:
+
+![Screenshot](docs/Capture%20d’écran%20du%202021-07-24%2014-09-28.png)
+
+Le lien vers la [documentation de Locust](https://docs.locust.io/en/stable/)

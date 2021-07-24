@@ -18,23 +18,27 @@
     {% endif%}
     Points available: {{club['points']}}
     <h3>Competitions:</h3>
-    <ul>
-        {% for comp in competitions %}
-        <li>
-            {{comp['name']}}<br />
-            Date: {{comp['date']}}<br />
-            {% if datetime.strptime(comp['date'], '%Y-%m-%d %H:%M:%S') > datetime.now() %}
-                Number of Places: {{comp['numberOfPlaces']}}
-                {% if comp['numberOfPlaces']|int >0 %}
-                <a href="{{ url_for('book',competition=comp['name'],club=club['name']) }}">Book Places</a>
-                {% endif %}
-                {% else %}
-                Finished
-            {% endif %}
-        </li>
-        <hr />
-        {% endfor %}
-    </ul>
+        {% if competitions %}
+            <ul>
+                {% for comp in competitions %}
+                <li>
+                    {{comp['name']}}<br />
+                    Date: {{comp['date']}}<br />
+                    {% if datetime.strptime(comp['date'], '%Y-%m-%d %H:%M:%S') > datetime.now() %}
+                        Number of Places: {{comp['numberOfPlaces']}}
+                        {% if comp['numberOfPlaces']|int >0 %}
+                        <a href="{{ url_for('book',competition=comp['name'],club=club['name']) }}">Book Places</a>
+                        {% endif %}
+                        {% else %}
+                        Finished
+                    {% endif %}
+                </li>
+                <hr />
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p style="color: red">Something went wrong-please try again</p>
+        {% endif %}
         <br/><br/>
     <hr/>
     <a href="{{ url_for('show_clubs') }}">View all registered clubs and respective point count</a>

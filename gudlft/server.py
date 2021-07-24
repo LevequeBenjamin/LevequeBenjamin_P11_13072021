@@ -26,7 +26,7 @@ def show_summary():
     if found_club:
         return render_template('welcome.html', club=found_club, competitions=get_data.COMPETITIONS, datetime=datetime)
     flash("Sorry, that email wasn't found.")
-    return render_template('index.html')
+    return redirect(url_for('index'))
 
 
 @app.route('/book/<competition>/<club>')
@@ -37,7 +37,7 @@ def book(competition, club):
 
     if found_club and found_competition:
         return render_template('booking.html', club=found_club, competition=found_competition)
-    flash("Something went wrong-please try again")
+    flash("Something went wrong-please try again.")
     return render_template('welcome.html', club=club, competitions=get_data.COMPETITIONS)
 
 

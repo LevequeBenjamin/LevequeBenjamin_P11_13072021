@@ -1,7 +1,9 @@
+"""Docstrings."""
 
 
 class TestClient:
     """Docstrings."""
+
     def test_index(self, client):
         """Docstrings."""
         response = client.get("/")
@@ -12,18 +14,18 @@ class TestClient:
 
 class TestShowSummary:
     """Docstrings."""
+
     def setup_method(self):
-        self.email_valid = "test1@test.com"
         self.email_invalid = "foo@bar.com"
 
     def test_login(self, client, database):
         """Docstrings."""
         response = client.post('/showSummary', data=dict(
-            email=self.email_valid,
+            email=database.CLUBS[0]['email'],
         ), follow_redirects=True)
 
         assert response.status_code == 200
-        assert bytes(self.email_valid, 'utf-8') in response.data
+        assert bytes(database.CLUBS[0]['email'], 'utf-8') in response.data
 
     def test_login_invalid(self, client, database):
         """Docstrings."""
@@ -38,13 +40,13 @@ class TestShowSummary:
     def test_competitions(self, client, database):
         """Docstrings."""
         response = client.post('/showSummary', data=dict(
-            email=self.email_valid,
+            email=database.CLUBS[0]['email'],
         ), follow_redirects=True)
 
         for competition in database.COMPETITIONS:
             assert competition["name"] in str(response.data)
 
-    def test_competitions_invalid(self, client, database):
+    def test_competitions_invalid_email(self, client, database):
         """Docstrings."""
         # I test the request with an unknown email.
         response = client.post('/showSummary', data=dict(
@@ -57,17 +59,16 @@ class TestShowSummary:
 
 class TestBook:
     """Docstrings."""
+
     def setup_method(self):
-        self.competition_name = 'Competition Test 1'
-        self.club_name = "Club Test 1"
         self.places = 'Places available: 21'
 
     def test_booking(self, client, database):
         """Docstrings."""
-        response = client.get(f"/book/{self.competition_name}/{self.club_name}")
+        response = client.get(f"/book/{database.COMPETITIONS[0]['name']}/{database.CLUBS[0]['name']}")
 
         assert response.status_code == 200
-        assert bytes(self.competition_name, 'utf-8') in response.data
+        assert bytes(database.COMPETITIONS[0]['name'], 'utf-8') in response.data
         assert bytes(self.places, 'utf-8') in response.data
 
     def test_booking_invalid(self, client):
@@ -155,6 +156,7 @@ class TestShowClub:
 
 class TestLogin:
     """Docstrings."""
+
     def test_logout(self, client):
         """Docstrings."""
         response = client.get("/logout", follow_redirects=True)

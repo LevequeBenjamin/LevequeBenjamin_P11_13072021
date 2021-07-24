@@ -7,47 +7,47 @@ DB_COMPETITIONS_PATH = Path(__file__).resolve().parent.parent / "db/competitions
 
 def load_clubs():
     """Docstrings."""
-    with open(DB_CLUBS_PATH) as file:
-        return json.load(file)['clubs']
+    try:
+        with open(DB_CLUBS_PATH) as file:
+            return json.load(file)['clubs']
+    except FileNotFoundError:
+        return None
 
 
 def load_competitions():
     """Docstrings."""
-    with open(DB_COMPETITIONS_PATH) as file:
-        return json.load(file)['competitions']
+    try:
+        with open(DB_COMPETITIONS_PATH) as file:
+            return json.load(file)['competitions']
+    except FileNotFoundError:
+        return None
 
 
 def get_club_by_mail(mail: str):
     """Docstrings."""
-    selected_club = None
-    for club in CLUBS:
-        if club["email"] == mail:
-            selected_club = club
-            break
-
-    return selected_club
+    if CLUBS:
+        for club in CLUBS:
+            if club["email"] == mail:
+                return club
+    return None
 
 
 def get_club_by_name(name: str):
     """Docstrings."""
-    selected_club = None
-    for club in CLUBS:
-        if club["name"] == name:
-            selected_club = club
-            break
-
-    return selected_club
+    if CLUBS:
+        for club in CLUBS:
+            if club["name"] == name:
+                return club
+    return None
 
 
 def get_competition_by_name(name: str):
     """Docstrings."""
-    selected_competition = None
-    for competition in COMPETITIONS:
-        if competition["name"] == name:
-            selected_competition = competition
-            break
-
-    return selected_competition
+    if COMPETITIONS:
+        for competition in COMPETITIONS:
+            if competition["name"] == name:
+                return competition
+    return None
 
 
 def load():

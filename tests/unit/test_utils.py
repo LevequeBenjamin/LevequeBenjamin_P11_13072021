@@ -2,55 +2,76 @@
 from gudlft.utils import utils
 
 
-class TestUtils:
+class TestGetMaxPlaces:
+    """Docstrings."""
+
     def test_get_max_places(self, database):
         """Docstrings."""
         places_12 = utils.get_max_places(
             competition=database.COMPETITIONS[0], club=database.CLUBS[0]
         )
+        assert places_12 == 12
+
         places_5 = utils.get_max_places(
             competition=database.COMPETITIONS[1], club=database.CLUBS[1]
         )
+        assert places_5 == 5
+
         places_1 = utils.get_max_places(
             competition=database.COMPETITIONS[0], club=database.CLUBS[2]
         )
-
-        assert places_12 == 12
-        assert places_5 == 5
         assert places_1 == 1
 
-    def test_is_purchase_valid(self, database):
+
+class TestIsPurchase:
+    """Docstrings."""
+
+    def test_is_purchase(self, database):
         """Docstrings."""
-        purchase_pass = utils.is_purchase_valid(
+        purchase = utils.is_purchase_valid(
             competition=database.COMPETITIONS[0],
             club=database.CLUBS[0],
             places="3",
         )
-        purchase_too_much_places = utils.is_purchase_valid(
+        assert purchase
+
+    def test_is_purchase_too_much_places(self, database):
+        """Docstrings."""
+        purchase = utils.is_purchase_valid(
             competition=database.COMPETITIONS[0],
             club=database.CLUBS[2],
             places="5",
         )
+        assert not purchase
 
-        assert purchase_pass
-        assert not purchase_too_much_places
-
-        purchase_var_not_set = utils.is_purchase_valid(
+    def test_is_purchase_var_not_set(self, database):
+        """Docstrings."""
+        purchase = utils.is_purchase_valid(
             competition=None, club=database.CLUBS[0], places="3"
         )
-        purchase_places_not_numeric = utils.is_purchase_valid(
+        assert not purchase
+
+    def test_is_purchase_places_not_numeric(self, database):
+        """Docstrings."""
+        purchase = utils.is_purchase_valid(
             competition=database.COMPETITIONS[0],
             club=database.CLUBS[0],
             places="foo",
         )
+        assert not purchase
 
-        assert not purchase_var_not_set
-        assert not purchase_places_not_numeric
+
+class TestIsCompetitionFinished:
+    """Docstrings."""
 
     def test_is_competition_finished(self):
         """Docstrings."""
         date1 = "2000-01-01 10:10:10"
-        date2 = "2100-01-01 10:10:10"
 
         assert utils.is_competition_finished(date=date1)
+
+    def test_is_competition_not_finished(self):
+        """Docstrings."""
+        date2 = "2100-01-01 10:10:10"
+
         assert not utils.is_competition_finished(date=date2)
