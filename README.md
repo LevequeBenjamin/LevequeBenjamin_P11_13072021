@@ -16,6 +16,7 @@ par des tests et du débogage.
 ## Auteur
 Lévêque Benjamin
 
+--------------------
 ### Installation
 
 Cet application web exécutable localement peut être installée en suivant les étapes décrites ci-dessous.
@@ -51,7 +52,7 @@ Pour activer l'environnement, exécutez la commande :
 ```
 $ pip install -r requirements.txt
 ```
-
+--------------------
 ### Usage
 
 Pour lancer l'application utilisez les commandes :
@@ -63,6 +64,7 @@ $ flask run
 ```
 #### Puis rendez-vous sur votre [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
 
+--------------------
 ### Tests
 
 #### 1. Installez les dépendances du projet avec la commande :
@@ -88,17 +90,25 @@ $ pytest --cov=gudlft --cov-report html
 ```
 $ locust --config tests/locust/master.conf
 ```
+--------------------
 
 Vous pouvez également tester les perfomances avec la commande suivante :
 
 ```
 $ locust -f tests/locust/locust_file.py 
 ```
-Il faudra vous rendre sur l'adresse [http://0.0.0.0:8089/](http://0.0.0.0:8089/), et remplir les champs
-demandés.
+Une fois que vous avez démarré Locust en utilisant l'une des lignes de commande ci-dessus, vous devez
+ouvrir un navigateur et le pointer vers [http://0.0.0.0:8089/](http://0.0.0.0:8089/). Ensuite, vous
+devriez être accueilli avec quelque chose comme ceci :
 
-exemple:
+Remplissez le formulaire et essayez-le !
 
 ![Screenshot](docs/Capture%20d’écran%20du%202021-07-24%2014-09-28.png)
 
+![Screenshot](docs/Capture%20d’écran%20du%202021-07-24%2014-23-29.png)
+
+![Screenshot](docs/Capture%20d’écran%20du%202021-07-24%2014-24-28.png)
+
 Le lien vers la [documentation de Locust](https://docs.locust.io/en/stable/)
+
+--------------------
