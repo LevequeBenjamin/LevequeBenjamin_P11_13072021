@@ -1,29 +1,38 @@
-"""Docstrings."""
+"""
+conftest.py
+"""
 
 # import
 import json
 from multiprocessing import Process
 import pytest
 from selenium import webdriver
+import geckodriver_autoinstaller
 from selenium.webdriver.firefox.options import Options
 from gudlft import server
 from gudlft.get_data import get_data
 
 
+# Check if the current version of geckodriver exists
+# and if it doesn't exist, download it automatically,
+# then add geckodriver to path
+geckodriver_autoinstaller.install()
+
+
 class BaseFixture:
-    """Docstrings."""
+    """This is class for create fixture."""
 
     @staticmethod
     @pytest.fixture()
     def client():
-        """Docstrings."""
+        """Create Fixture client."""
         with server.app.test_client() as client:
             yield client
 
     @staticmethod
     @pytest.fixture(scope="module")
     def clubs(tmp_path_factory):
-        """Docstrings."""
+        """Create Fixture clubs."""
         clubs = {
             "clubs": [
                 {"name": "Club Test 1", "email": "test1@test.com", "points": "20"},
@@ -42,7 +51,7 @@ class BaseFixture:
     @staticmethod
     @pytest.fixture(scope="module")
     def competitions(tmp_path_factory):
-        """Docstrings."""
+        """Create Fixture competitions."""
         competitions = {
             "competitions": [
                 {
@@ -73,7 +82,7 @@ class BaseFixture:
     @staticmethod
     @pytest.fixture(scope="module")
     def database(clubs, competitions):
-        """Docstrings."""
+        """Create Fixture database."""
         get_data.DB_CLUBS_PATH = clubs[0]
         get_data.DB_COMPETITIONS_PATH = competitions[0]
 
@@ -82,12 +91,12 @@ class BaseFixture:
 
 
 class Driver:
-    """Docstrings."""
+    """This is class for create fixture."""
 
     @staticmethod
     @pytest.fixture(scope="module")
     def driver(database):
-        """Docstrings."""
+        """Create Fixture driver Firefox."""
         process = Process(target=server.app.run)
         process.daemon = True
         process.start()

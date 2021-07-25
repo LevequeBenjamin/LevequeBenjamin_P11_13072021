@@ -1,4 +1,4 @@
-"""This module contains a functional test."""
+"""test_ui.py"""
 
 # selenium
 from selenium.webdriver.common.by import By
@@ -9,15 +9,15 @@ from tests.conftest import Driver, BaseFixture
 
 
 class TestUi(BaseFixture, Driver):
-    """Docstrings."""
+    """This is class for ui tests."""
 
     def setup_method(self):
-        """Docstrings."""
+        """Inits 'self.places'."""
         self.places = "12"
 
     @staticmethod
     def test_login_ui(driver, database):
-        """Docstrings."""
+        """Test as index and show_summary routes endpoint."""
         # the user enters his email and clicks on the "enter" button.
         # it is redirected to the welcome page with the message "Welcome, test1@test.com".
 
@@ -35,7 +35,7 @@ class TestUi(BaseFixture, Driver):
 
     @staticmethod
     def test_show_summary_ui(driver, database):
-        """Docstrings."""
+        """Test as show_summary route endpoint."""
         # The number of places available is displayed and there are 20.
         # The competitions are displayed and and the number is correct.
         # The user clicks on the "booking" link of the "Competition Test 1".
@@ -54,7 +54,7 @@ class TestUi(BaseFixture, Driver):
         competitions[0].find_element_by_tag_name("a").click()
 
     def test_booking_ui(self, driver, database):
-        """Docstrings."""
+        """Test as book and purchase_places routes endpoint."""
         # The name of the competition and the number of places available is displayed.
         # The user can take between 1 and his number of tickets.
         # He takes 12 tickets.
@@ -78,7 +78,7 @@ class TestUi(BaseFixture, Driver):
         assert "booking complete!" in driver.page_source
 
     def test_values_update_ui(self, driver, database):
-        """Docstrings."""
+        """Test as show_summary route endpoint."""
         # The 12 tickets have been removed from his account.
         # The 12 places are well removed from the available places of the competition.
 
@@ -92,7 +92,7 @@ class TestUi(BaseFixture, Driver):
 
     @staticmethod
     def test_logout_ui(driver, database):
-        """Docstrings."""
+        """Test as logout route endpoint."""
         # The user clicks on the logout button.
         # It is redirected to the "index" page.
         logout_input = driver.find_element_by_class_name("logout")
@@ -101,8 +101,8 @@ class TestUi(BaseFixture, Driver):
         assert "GUDLFT Registration" in driver.page_source
 
     @staticmethod
-    def test_club_list_ui(driver, database):
-        """Docstrings."""
+    def test_show_club_ui(driver, database):
+        """Test as show_clubs route endpoint."""
         # The user clicks on the link "View all registered clubs and respective point count".
         # All clubs are well displayed and the number is correct.
         a_input = driver.find_element_by_tag_name("a")

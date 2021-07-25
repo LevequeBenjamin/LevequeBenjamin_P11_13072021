@@ -1,10 +1,9 @@
-"""Docstrings."""
+"""server.py"""
+
+# import
 from datetime import datetime
-
 from flask import Flask, render_template, request, redirect, flash, url_for
-
 from gudlft.get_data import get_data
-
 from gudlft.utils.utils import is_purchase_valid, is_competition_finished
 
 app = Flask(__name__)
@@ -15,13 +14,13 @@ get_data.load()
 
 @app.route('/')
 def index():
-    """Docstrings."""
+    """This is the index route endpoint."""
     return render_template('index.html')
 
 
 @app.route('/showSummary', methods=['POST'])
 def show_summary():
-    """Docstrings."""
+    """This is the show_summary route endpoint."""
     found_club = get_data.get_club_by_mail(mail=request.form["email"])
     if found_club:
         return render_template('welcome.html', club=found_club, competitions=get_data.COMPETITIONS, datetime=datetime)
@@ -31,7 +30,7 @@ def show_summary():
 
 @app.route('/book/<competition>/<club>')
 def book(competition, club):
-    """Docstrings."""
+    """This is the book route endpoint."""
     found_competition = get_data.get_competition_by_name(name=competition)
     found_club = get_data.get_club_by_name(name=club)
 
@@ -43,7 +42,7 @@ def book(competition, club):
 
 @app.route('/purchasePlaces', methods=['POST'])
 def purchase_places():
-    """Docstrings."""
+    """This is the purchase_places route endpoint."""
     found_competition = get_data.get_competition_by_name(name=request.form["competition"])
     found_club = get_data.get_club_by_name(name=request.form["club"])
     places_required = request.form['places']
@@ -67,11 +66,11 @@ def purchase_places():
 
 @app.route("/showSummary/clubs")
 def show_clubs():
-    """Docstrings."""
+    """This is the show_clubs route endpoint."""
     return render_template("clubs.html", clubs=get_data.CLUBS)
 
 
 @app.route('/logout')
 def logout():
-    """Docstrings."""
+    """This is the logout route endpoint."""
     return redirect(url_for('index'))

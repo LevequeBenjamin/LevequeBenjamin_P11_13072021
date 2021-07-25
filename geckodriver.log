@@ -1664,3 +1664,169 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 1627147479230	Marionette	WARN	TLS certificate errors will be ignored for this session
 JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
 JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1627192794085	geckodriver	INFO	Listening on 127.0.0.1:41035
+1627192794108	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--width=1920" "--height=1080" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileISVzs3"
+*** You are running in headless mode.
+[GFX1-]: More than 1 GPU from same vendor detected via PCI, cannot deduce device
+1627192809279	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileISVzs3/search.json.mozlz4", (void 0)))
+1627192818183	Marionette	INFO	Listening on port 44383
+1627192818500	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.error: services.settings: 
+  main/doh-providers Signature failed  InvalidSignatureError: Invalid content signature (main/doh-providers)
+console.error: services.settings: 
+  main/doh-providers local data was corrupted
+console.warn: services.settings: main/doh-providers Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/doh-config Signature failed  InvalidSignatureError: Invalid content signature (main/doh-config)
+console.error: services.settings: 
+  main/doh-config local data was corrupted
+console.warn: services.settings: main/doh-config Signature verified failed. Retry from scratch
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+1627193776838	geckodriver	INFO	Listening on 127.0.0.1:56861
+1627193777847	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--width=1920" "--height=1080" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileXrKTVy"
+*** You are running in headless mode.
+[GFX1-]: More than 1 GPU from same vendor detected via PCI, cannot deduce device
+1627193787357	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileXrKTVy/search.json.mozlz4", (void 0)))
+console.error: Region.jsm: "Error fetching region" (new AbortError("The operation was aborted. ", (void 0), 770))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 419))
+1627193805536	Marionette	INFO	Listening on port 46639
+1627193806626	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.error: services.settings: 
+  main/doh-providers Signature failed  InvalidSignatureError: Invalid content signature (main/doh-providers)
+console.error: services.settings: 
+  main/doh-providers local data was corrupted
+console.warn: services.settings: main/doh-providers Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/doh-config Signature failed  InvalidSignatureError: Invalid content signature (main/doh-config)
+console.error: services.settings: 
+  main/doh-config local data was corrupted
+console.warn: services.settings: main/doh-config Signature verified failed. Retry from scratch
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+1627201783063	geckodriver	INFO	Listening on 127.0.0.1:48289
+1627201783904	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--width=1920" "--height=1080" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileTkV6Uw"
+*** You are running in headless mode.
+[GFX1-]: More than 1 GPU from same vendor detected via PCI, cannot deduce device
+1627201790776	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileTkV6Uw/search.json.mozlz4", (void 0)))
+1627201799569	Marionette	INFO	Listening on port 43621
+1627201799830	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.error: services.settings: 
+  main/doh-providers Signature failed  InvalidSignatureError: Invalid content signature (main/doh-providers)
+console.error: services.settings: 
+  main/doh-providers local data was corrupted
+console.warn: services.settings: main/doh-providers Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/doh-config Signature failed  InvalidSignatureError: Invalid content signature (main/doh-config)
+console.error: services.settings: 
+  main/doh-config local data was corrupted
+console.warn: services.settings: main/doh-config Signature verified failed. Retry from scratch
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+1627203115247	geckodriver	INFO	Listening on 127.0.0.1:50177
+1627203116256	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--width=1920" "--height=1080" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileZh36H3"
+*** You are running in headless mode.
+[GFX1-]: More than 1 GPU from same vendor detected via PCI, cannot deduce device
+1627203120965	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileZh36H3/search.json.mozlz4", (void 0)))
+console.error: Region.jsm: "Error fetching region" (new AbortError("The operation was aborted. ", (void 0), 770))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 419))
+1627203133624	Marionette	INFO	Listening on port 38035
+1627203134385	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1627203232762	geckodriver	INFO	Listening on 127.0.0.1:60945
+1627203233627	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--width=1920" "--height=1080" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilePRplQA"
+*** You are running in headless mode.
+[GFX1-]: More than 1 GPU from same vendor detected via PCI, cannot deduce device
+1627203239418	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilePRplQA/search.json.mozlz4", (void 0)))
+1627203253036	Marionette	INFO	Listening on port 43501
+1627203253495	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1627203364060	geckodriver	INFO	Listening on 127.0.0.1:58261
+1627203365034	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--width=1920" "--height=1080" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilevEjwkJ"
+*** You are running in headless mode.
+[GFX1-]: More than 1 GPU from same vendor detected via PCI, cannot deduce device
+1627203371711	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofilevEjwkJ/search.json.mozlz4", (void 0)))
+1627203384049	Marionette	INFO	Listening on port 41565
+1627203384521	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.error: services.settings: 
+  main/doh-providers Signature failed  InvalidSignatureError: Invalid content signature (main/doh-providers)
+console.error: services.settings: 
+  main/doh-providers local data was corrupted
+console.warn: services.settings: main/doh-providers Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/doh-config Signature failed  InvalidSignatureError: Invalid content signature (main/doh-config)
+console.error: services.settings: 
+  main/doh-config local data was corrupted
+console.warn: services.settings: main/doh-config Signature verified failed. Retry from scratch
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+console.error: services.settings: 
+  main/doh-providers Signature failed  InvalidSignatureError: Invalid content signature (main/doh-providers)
+console.error: services.settings: 
+  main/doh-providers local data was corrupted
+console.warn: services.settings: main/doh-providers Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/doh-config Signature failed  InvalidSignatureError: Invalid content signature (main/doh-config)
+console.error: services.settings: 
+  main/doh-config local data was corrupted
+console.warn: services.settings: main/doh-config Signature verified failed. Retry from scratch
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+console.error: services.settings: 
+  main/doh-providers Signature failed  InvalidSignatureError: Invalid content signature (main/doh-providers)
+console.error: services.settings: 
+  main/doh-providers local data was corrupted
+console.warn: services.settings: main/doh-providers Signature verified failed. Retry from scratch
+console.error: services.settings: 
+  main/doh-config Signature failed  InvalidSignatureError: Invalid content signature (main/doh-config)
+console.error: services.settings: 
+  main/doh-config local data was corrupted
+console.warn: services.settings: main/doh-config Signature verified failed. Retry from scratch
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+1627203826646	Marionette	INFO	Stopped listening on port 41565
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1627203827087	Marionette	INFO	Stopped listening on port 43501
+1627203827339	Marionette	INFO	Stopped listening on port 43621
+1627203830139	Marionette	INFO	Stopped listening on port 38035
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1627209023603	geckodriver	INFO	Listening on 127.0.0.1:50565
+1627209024549	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "--headless" "--width=1920" "--height=1080" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileHWkzr7"
+*** You are running in headless mode.
+[GFX1-]: More than 1 GPU from same vendor detected via PCI, cannot deduce device
+1627209027612	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileHWkzr7/search.json.mozlz4", (void 0)))
+1627209032684	Marionette	INFO	Listening on port 35055
+1627209032786	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.

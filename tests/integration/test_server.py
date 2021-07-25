@@ -1,13 +1,15 @@
-"""Docstrings."""
+"""test_server.py"""
+
+# import
 from tests.conftest import BaseFixture
 
 
 class TestClient(BaseFixture):
-    """Docstrings."""
+    """This is class for index route endpoint tests."""
 
     @staticmethod
     def test_index(client):
-        """Docstrings."""
+        """Test as index route endpoint."""
         response = client.get("/")
 
         assert response.status_code == 200
@@ -15,15 +17,15 @@ class TestClient(BaseFixture):
 
 
 class TestShowSummary(BaseFixture):
-    """Docstrings."""
+    """This is class for show_summary route endpoint tests."""
 
     def setup_method(self):
-        """Docstrings."""
+        """Inits 'self.email_invalid'."""
         self.email_invalid = "foo@bar.com"
 
     @staticmethod
     def test_login(client, database):
-        """Docstrings."""
+        """Test as show_summary route endpoint."""
         response = client.post('/showSummary', data=dict(
             email=database.CLUBS[0]['email'],
         ), follow_redirects=True)
@@ -32,8 +34,8 @@ class TestShowSummary(BaseFixture):
         assert bytes(database.CLUBS[0]['email'], 'utf-8') in response.data
 
     def test_login_invalid(self, client, database):
-        """Docstrings."""
-        # I test the request with an unknown email.
+        """Test as show_summary route endpoint."""
+        # Test the request with an unknown email.
         response = client.post('/showSummary', data=dict(
             email=self.email_invalid,
         ), follow_redirects=True)
@@ -43,7 +45,7 @@ class TestShowSummary(BaseFixture):
 
     @staticmethod
     def test_competitions(client, database):
-        """Docstrings."""
+        """Test as show_summary route endpoint."""
         response = client.post('/showSummary', data=dict(
             email=database.CLUBS[0]['email'],
         ), follow_redirects=True)
@@ -52,7 +54,7 @@ class TestShowSummary(BaseFixture):
             assert competition["name"] in str(response.data)
 
     def test_competitions_invalid_email(self, client, database):
-        """Docstrings."""
+        """Test as show_summary route endpoint."""
         # I test the request with an unknown email.
         response = client.post('/showSummary', data=dict(
             email=self.email_invalid,
@@ -63,14 +65,14 @@ class TestShowSummary(BaseFixture):
 
 
 class TestBook(BaseFixture):
-    """Docstrings."""
+    """This is class for book route endpoint tests."""
 
     def setup_method(self):
-        """Docstrings."""
+        """Inits 'self.places'."""
         self.places = 'Places available: 21'
 
     def test_booking(self, client, database):
-        """Docstrings."""
+        """Test as book route endpoint."""
         response = client.get(f"/book/{database.COMPETITIONS[0]['name']}/{database.CLUBS[0]['name']}")
 
         assert response.status_code == 200
@@ -79,18 +81,18 @@ class TestBook(BaseFixture):
 
     @staticmethod
     def test_booking_invalid(client):
-        """Docstrings."""
+        """Test as book route endpoint."""
         response = client.get("/book/Foo/Bar")
 
         assert response.status_code == 500
 
 
 class TestPurchasePlaces(BaseFixture):
-    """Docstrings."""
+    """This is class for purchase_places endpoint tests."""
 
     @staticmethod
     def test_booking(client, database):
-        """Docstrings."""
+        """Test as purchase_places endpoint."""
         initial_places = int(database.COMPETITIONS[0]["numberOfPlaces"])
         initial_points = int(database.CLUBS[0]["points"])
 
@@ -107,7 +109,7 @@ class TestPurchasePlaces(BaseFixture):
 
     @staticmethod
     def test_booking_with_15_places(client, database):
-        """Docstrings."""
+        """Test as purchase_places endpoint."""
         # I test the request with more than 12 places.
         response = client.post('/purchasePlaces', data=dict(
             competition=database.COMPETITIONS[0]["name"],
@@ -119,7 +121,7 @@ class TestPurchasePlaces(BaseFixture):
 
     @staticmethod
     def test_booking_with_club_enough_space_available(client, database):
-        """Docstrings."""
+        """Test as purchase_places endpoint."""
         # I test the request with a greater number of places than the club is available.
         response = client.post('/purchasePlaces', data=dict(
             competition=database.COMPETITIONS[1]["name"],
@@ -131,7 +133,7 @@ class TestPurchasePlaces(BaseFixture):
 
     @staticmethod
     def test_booking_with_competition_enough_space_available(client, database):
-        """Docstrings."""
+        """Test as purchase_places endpoint."""
         # I test the request with a greater number of places than the competition is available.
         response = client.post('/purchasePlaces', data=dict(
             competition=database.COMPETITIONS[0]["name"],
@@ -143,7 +145,7 @@ class TestPurchasePlaces(BaseFixture):
 
     @staticmethod
     def test_booking_with_finished_competition(client, database):
-        """Docstrings."""
+        """Test as purchase_places endpoint."""
         # I test the request with a competition which is finished.
         response = client.post('/purchasePlaces', data=dict(
             competition=database.COMPETITIONS[2]["name"],
@@ -154,11 +156,11 @@ class TestPurchasePlaces(BaseFixture):
 
 
 class TestShowClub(BaseFixture):
-    """Docstrings."""
+    """This is class for show_clubs endpoint tests."""
 
     @staticmethod
     def test_clubs(client, database):
-        """Docstrings."""
+        """Test as show_clubs endpoint."""
         response = client.get("showSummary/clubs")
 
         assert response.status_code == 200
@@ -167,12 +169,12 @@ class TestShowClub(BaseFixture):
             assert club["name"] in str(response.data)
 
 
-class TestLogin(BaseFixture):
-    """Docstrings."""
+class TestLogout(BaseFixture):
+    """This is class for logout endpoint tests."""
 
     @staticmethod
     def test_logout(client):
-        """Docstrings."""
+        """Test as logout endpoint."""
         response = client.get("/logout", follow_redirects=True)
 
         assert response.status_code == 200
