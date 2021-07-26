@@ -1,8 +1,15 @@
 """test_get_data.py"""
+import pytest
 
 from gudlftapp.get_data import get_data
 from gudlftapp.tests.conftest import BaseFixture
 
+
+# # # # # # # # # # # # # # #
+#     load_clubs()          #
+#     get_club_by_mail()    #
+#     get_club_by_name()    #
+# # # # # # # # # # # # # # #
 
 class TestLoadClubs(BaseFixture):
     """This is class for load clubs tests."""
@@ -23,15 +30,17 @@ class TestLoadClubs(BaseFixture):
     def test_get_club_by_mail_is_none():
         """Test as get_club_by_mail function."""
         # Test with a unknown email.
-        assert get_data.get_club_by_mail(mail="foo") is None
+        assert not get_data.get_club_by_mail(mail="foo")
         # Test with a empty email.
-        assert get_data.get_club_by_mail(mail="") is None
+        assert not get_data.get_club_by_mail(mail="")
+        # Test with a None email.
+        assert not get_data.get_club_by_mail(mail=None)
         # Test with a int.
-        assert get_data.get_club_by_mail(mail=1) is None
+        assert not get_data.get_club_by_mail(mail=1)
         # Test with a bool.
-        assert get_data.get_club_by_mail(mail=True) is None
+        assert not get_data.get_club_by_mail(mail=True)
         # Test with a dict.
-        assert get_data.get_club_by_mail(mail={}) is None
+        assert not get_data.get_club_by_mail(mail={})
 
     @staticmethod
     def test_get_club_by_name(database):
@@ -44,16 +53,24 @@ class TestLoadClubs(BaseFixture):
     def test_get_club_by_name_is_none():
         """Test as get_club_by_name function."""
         # Test with a unknown name.
-        assert get_data.get_club_by_name(name="foo") is None
+        assert not get_data.get_club_by_name(name="foo")
         # Test with a empty name.
-        assert get_data.get_club_by_name(name="") is None
+        assert not get_data.get_club_by_name(name="")
+        # Test with a None name.
+        assert not get_data.get_club_by_name(name=None)
         # Test with a int.
-        assert get_data.get_club_by_name(name=1) is None
+        assert not get_data.get_club_by_name(name=1)
         # Test with a bool.
-        assert get_data.get_club_by_name(name=True) is None
+        assert not get_data.get_club_by_name(name=True)
         # Test with a dict.
-        assert get_data.get_club_by_name(name={}) is None
+        assert not get_data.get_club_by_name(name={})
 
+
+# # # # # # # # # # # # # # #
+#  load_competitions()      #
+#  get_competition_by_mail()#
+#  get_club_by_name()       #
+# # # # # # # # # # # # # # #
 
 class TestLoadCompetitions(BaseFixture):
     """This is class for load competitions tests."""
@@ -74,16 +91,22 @@ class TestLoadCompetitions(BaseFixture):
     def test_get_competition_by_name_is_none():
         """Test as get_competition_by_name function."""
         # Test with a unknown name.
-        assert get_data.get_competition_by_name(name="foo") is None
+        assert not get_data.get_competition_by_name(name="foo")
         # Test with a empty name.
-        assert get_data.get_competition_by_name(name="") is None
+        assert not get_data.get_competition_by_name(name="")
+        # Test with a None name.
+        assert not get_data.get_competition_by_name(name=None)
         # Test with a int.
-        assert get_data.get_competition_by_name(name=1) is None
+        assert not get_data.get_competition_by_name(name=1)
         # Test with a bool.
-        assert get_data.get_competition_by_name(name=True) is None
+        assert not get_data.get_competition_by_name(name=True)
         # Test with a dict.
-        assert get_data.get_competition_by_name(name={}) is None
+        assert not get_data.get_competition_by_name(name={})
 
+
+# # # # # # # # # # # # # # #
+#           load()          #
+# # # # # # # # # # # # # # #
 
 class TestLoad(BaseFixture):
     """This is class for load tests."""

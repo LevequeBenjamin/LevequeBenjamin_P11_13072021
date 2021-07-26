@@ -5,6 +5,10 @@ from gudlftapp.utils import utils
 from gudlftapp.tests.conftest import BaseFixture
 
 
+# # # # # # # # # # # # # # #
+#      get_max_places()     #
+# # # # # # # # # # # # # # #
+
 class TestGetMaxPlaces(BaseFixture):
     """This is class for get_max_places tests."""
 
@@ -30,6 +34,9 @@ class TestGetMaxPlaces(BaseFixture):
         places_with_empty_competition = utils.get_max_places(competition={}, club=database.CLUBS[0])
         assert not places_with_empty_competition
 
+        places_with_none_competition = utils.get_max_places(competition=None, club=database.CLUBS[0])
+        assert not places_with_none_competition
+
         places_with_list = utils.get_max_places(competition=[], club=database.CLUBS[0])
         assert not places_with_list
 
@@ -42,6 +49,10 @@ class TestGetMaxPlaces(BaseFixture):
         places_with_str = utils.get_max_places(competition="string", club=database.CLUBS[0])
         assert not places_with_str
 
+
+# # # # # # # # # # # # # # #
+#       is_purchase()       #
+# # # # # # # # # # # # # # #
 
 class TestIsPurchase(BaseFixture):
     """This is class for is_purchase tests."""
@@ -81,6 +92,10 @@ class TestIsPurchase(BaseFixture):
         assert not purchase
 
 
+# # # # # # # # # # # # # # #
+# is_competition_finished() #
+# # # # # # # # # # # # # # #
+
 class TestIsCompetitionFinished(BaseFixture):
     """This is class for is_competition_finished tests."""
 
@@ -98,6 +113,8 @@ class TestIsCompetitionFinished(BaseFixture):
 
     def test_is_competition_finished_is_false(self):
         """Test is_competition_finished function."""
+        # Test with a None date.
+        assert not utils.is_competition_finished(date=None)
         # Test with a int.
         assert not utils.is_competition_finished(date=1)
         # Test with a invalid date.
