@@ -1,7 +1,7 @@
 """test_server.py"""
 
 # import
-from tests.conftest import BaseFixture
+from gudlftapp.tests.conftest import BaseFixture
 
 
 class TestClient(BaseFixture):

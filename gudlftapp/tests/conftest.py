@@ -9,8 +9,8 @@ import pytest
 from selenium import webdriver
 import geckodriver_autoinstaller
 from selenium.webdriver.firefox.options import Options
-from gudlft import server
-from gudlft.get_data import get_data
+from gudlftapp import server
+from gudlftapp.get_data import get_data
 
 
 # Check if the current version of geckodriver exists

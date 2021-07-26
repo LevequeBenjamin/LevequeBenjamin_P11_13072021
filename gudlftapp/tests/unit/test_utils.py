@@ -1,8 +1,8 @@
 """test_utils.py"""
 
 # import
-from gudlft.utils import utils
-from tests.conftest import BaseFixture
+from gudlftapp.utils import utils
+from gudlftapp.tests.conftest import BaseFixture
 
 
 class TestGetMaxPlaces(BaseFixture):

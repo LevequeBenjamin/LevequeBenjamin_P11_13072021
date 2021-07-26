@@ -58,7 +58,7 @@ $ pip install -r requirements.txt
 Pour lancer l'application utilisez les commandes :
 
 ```
-$ export FLASK_APP=server.py
+$ export FLASK_APP=run.py
 $ export FLASK_ENV=development
 $ flask run
 ```
@@ -82,20 +82,20 @@ $ coverage run -m pytest
 #### 3. Générer un rapport de couverture avec `Coverage` :
 
 ```
-$ pytest --cov=gudlft --cov-report html
+$ pytest --cov=gudlftapp --cov-report html
 ```
 
 #### 4. Testez les performances avec `Locust` :
 
 ```
-$ locust --config tests/locust/master.conf
+$ locust --config gudlftapp/tests/locust/master.conf
 ```
 --------------------
 
 Vous pouvez également tester les perfomances avec la commande suivante :
 
 ```
-$ locust -f tests/locust/locust_file.py 
+$ locust -f gudlftapp/tests/locust/locust_file.py 
 ```
 Une fois que vous avez démarré Locust en utilisant l'une des lignes de commande ci-dessus, vous devez
 ouvrir un navigateur et le pointer vers [http://0.0.0.0:8089/](http://0.0.0.0:8089/). Ensuite, vous

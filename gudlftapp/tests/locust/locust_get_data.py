@@ -3,8 +3,8 @@ import logging
 import json
 from multiprocessing import Process
 import tempfile
-from gudlft.get_data import get_data
-from gudlft import server
+from gudlftapp.get_data import get_data
+from gudlftapp import server
 
 _COMPETITIONS_FP = tempfile.NamedTemporaryFile()
 _CLUBS_FP = tempfile.NamedTemporaryFile()

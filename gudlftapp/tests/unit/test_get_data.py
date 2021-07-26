@@ -1,7 +1,7 @@
 """test_get_data.py"""
 
-from gudlft.get_data import get_data
-from tests.conftest import BaseFixture
+from gudlftapp.get_data import get_data
+from gudlftapp.tests.conftest import BaseFixture
 
 
 class TestLoadClubs(BaseFixture):

@@ -3,11 +3,12 @@
 # import
 from datetime import datetime
 from flask import Flask, render_template, request, redirect, flash, url_for
-from gudlft.get_data import get_data
-from gudlft.utils.utils import is_purchase_valid, is_competition_finished
+from gudlftapp.get_data import get_data
+from gudlftapp.utils.utils import is_purchase_valid, is_competition_finished
 
 app = Flask(__name__)
-app.secret_key = 'something_special'
+app.config.from_object('config')
+app.secret_key = app.config['SECRET_KEY']
 
 get_data.load()
 

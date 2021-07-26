@@ -1,7 +1,7 @@
 """Docstrings."""
 from random import randint
 from locust import HttpUser, task, between
-from tests.locust import locust_get_data
+from gudlftapp.tests.locust import locust_get_data
 
 
 class User(HttpUser):
