@@ -13,7 +13,7 @@ class TestUi(BaseFixture, Driver):
 
     def setup_method(self):
         """Inits 'self.places'."""
-        self.places = "12"
+        self.places = "4"
 
     @staticmethod
     def test_login_ui(driver, database):
@@ -63,12 +63,12 @@ class TestUi(BaseFixture, Driver):
         title = driver.find_element_by_tag_name("h2")
 
         assert database.COMPETITIONS[0]['name'] in title.text
-        assert str(database.COMPETITIONS[0]['numberOfPlaces']) in driver.page_source
+        assert database.COMPETITIONS[0]['numberOfPlaces'] in driver.page_source
 
         places_input = driver.find_element_by_name("places")
 
         assert places_input.get_attribute("min") == "1"
-        assert places_input.get_attribute("max") == database.CLUBS[0]['points']
+        assert places_input.get_attribute("max") == database.COMPETITIONS[0]['numberOfPlaces']
 
         places_input.send_keys(self.places)
 
@@ -82,12 +82,12 @@ class TestUi(BaseFixture, Driver):
         # The 12 tickets have been removed from his account.
         # The 12 places are well removed from the available places of the competition.
 
-        assert f"Points available: {int(database.CLUBS[0]['points']) - int(self.places)}" in driver.page_source
+        assert f"Points available: {int(database.CLUBS[0]['points']) - int(self.places)*3}" in driver.page_source
 
         competition_list = driver.find_element_by_class_name("competitions_container")
         competitions = competition_list.find_elements_by_tag_name("li")
 
-        assert f"Number of Places: {str(database.COMPETITIONS[0]['numberOfPlaces'] - int(self.places))}" in \
+        assert f"Number of Places: {str(int(database.COMPETITIONS[0]['numberOfPlaces']) - int(self.places)*3)}" in \
                competitions[0].text
 
     @staticmethod

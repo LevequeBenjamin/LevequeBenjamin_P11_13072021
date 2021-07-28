@@ -57,17 +57,17 @@ class BaseFixture:
                 {
                     "name": "Competition Test 1",
                     "date": "2100-03-27 10:00:00",
-                    "numberOfPlaces": 21,
+                    "numberOfPlaces": "21",
                 },
                 {
                     "name": "Competition Test 2",
                     "date": "2100-03-27 10:00:00",
-                    "numberOfPlaces": 5,
+                    "numberOfPlaces": "5",
                 },
                 {
                     "name": "Competition Test 3",
                     "date": "2000-03-27 10:00:00",
-                    "numberOfPlaces": 21,
+                    "numberOfPlaces": "21",
                 },
             ]
         }

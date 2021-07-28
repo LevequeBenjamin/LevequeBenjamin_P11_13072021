@@ -99,13 +99,13 @@ class TestPurchasePlaces(BaseFixture):
         response = client.post('/purchasePlaces', data=dict(
             competition=database.COMPETITIONS[0]["name"],
             club=database.CLUBS[0]['name'],
-            places=5
+            places=2
         ), follow_redirects=True)
 
         assert response.status_code == 200
         assert b'Great-booking complete!' in response.data
-        assert int(database.COMPETITIONS[0]["numberOfPlaces"]) == initial_places - 5
-        assert int(database.CLUBS[0]["points"]) == initial_points - 5
+        assert int(database.COMPETITIONS[0]["numberOfPlaces"]) == initial_places - 2*3
+        assert int(database.CLUBS[0]["points"]) == initial_points - 2*3
 
     @staticmethod
     def test_booking_with_15_places(client, database):

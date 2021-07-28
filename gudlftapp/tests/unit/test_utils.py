@@ -14,20 +14,20 @@ class TestGetMaxPlaces(BaseFixture):
 
     def test_get_max_places(self, database):
         """Test as get_max_places function."""
-        places_12 = utils.get_max_places(
+        places_6 = utils.get_max_places(
             competition=database.COMPETITIONS[0], club=database.CLUBS[0]
         )
-        assert places_12 == 12
+        assert places_6 == 6
 
-        places_5 = utils.get_max_places(
+        places_3 = utils.get_max_places(
             competition=database.COMPETITIONS[1], club=database.CLUBS[1]
         )
-        assert places_5 == 5
+        assert places_3 == 3
 
-        places_1 = utils.get_max_places(
+        places_0 = utils.get_max_places(
             competition=database.COMPETITIONS[0], club=database.CLUBS[2]
         )
-        assert places_1 == 1
+        assert places_0 == 0
 
     def test_get_max_places_is_none(self, database):
         """Test as get_max_places function."""

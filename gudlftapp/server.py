@@ -54,8 +54,8 @@ def purchase_places():
                 club=found_club,
                 competition=found_competition,
                 places=places_required):
-            found_competition['numberOfPlaces'] = int(found_competition['numberOfPlaces']) - int(places_required)
-            found_club['points'] = int(found_club['points']) - int(places_required)
+            found_competition['numberOfPlaces'] = int(found_competition['numberOfPlaces']) - int(places_required)*3
+            found_club['points'] = int(found_club['points']) - int(places_required)*3
             flash('Great-booking complete!')
         else:
             flash("you cannot reserve more than 12 places or it is possible that you do not have enough points.")

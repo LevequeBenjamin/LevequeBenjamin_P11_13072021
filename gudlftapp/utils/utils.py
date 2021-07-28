@@ -15,7 +15,7 @@ def get_max_places(club: dict, competition: dict):
         (int): Maximum number of places.
     """
     try:
-        return min(int(club["points"]), int(competition["numberOfPlaces"]), 12)
+        return min(int(int(club["points"])/3), int(competition["numberOfPlaces"]), 12)
     except (KeyError, TypeError, ValueError):
         return None
 
