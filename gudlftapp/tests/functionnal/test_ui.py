@@ -41,7 +41,7 @@ class TestUi(BaseFixture, Driver):
         # The user clicks on the "booking" link of the "Competition Test 1".
         # And it is redirected to the "booking" page.
 
-        assert f"Points available: {database.CLUBS[0]['points']}" in driver.page_source
+        assert f"Points available: {str(database.CLUBS[0]['points'])}" in driver.page_source
 
         competition_list = driver.find_element_by_class_name("competitions_container")
         competitions = competition_list.find_elements_by_tag_name("li")
